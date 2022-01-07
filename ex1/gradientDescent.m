@@ -18,9 +18,8 @@ for iter = 1:num_iters
     %
 
 
-    % 技巧，先把每个参数的size打印出来，然后size不匹配是不能够相乘的。
+    % 技巧: 先把每个参数的size打印出来，然后size不匹配是不能够相乘的。
     % 想办法让它们size匹配可以相乘，然后最后发现逻辑上也是正确的。
-    % 不过我下面的似乎是normal equation
     theta = theta - (alpha / length(X)) * (X' * (X * theta - y));
 
 
