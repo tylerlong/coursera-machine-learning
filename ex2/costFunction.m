@@ -22,7 +22,11 @@ grad = zeros(size(theta));
 
 
 h = sigmoid(X * theta);
-J = (-y * log(h)' - (1 - y) * log(1 - h)') / m;
+% 下面是我搞了很久搞错了，也值得参考借鉴。
+% 不要轻易前后调换位置。如果最终期待的结果是一个 scalar，那么看看如何才能直接到达，不需要借助`sum()`
+% 要搞清楚要transpose哪一个，否则本来可以得到scalar，得到的却是matrix
+% J = sum(sum(y * -log(h)' - (1 - y) * log(1 - h)')) / m;
+J = (-y' * log(h) - (1 - y)' * log(1 - h)) / m;
 grad = (h - y)' * X / m;
 
 
