@@ -19,6 +19,14 @@ grad = zeros(size(theta));
 
 
 
+h = sigmoid(X * theta);
+
+theta(1, 1) = 0; % because we don't regularize theta_0
+
+J = (-y' * log(h) - (1 - y)' * log(1 - h)) / m + lambda / 2 / m * sum(theta .^ 2);
+
+grad = (h - y)' * X / m + lambda / m * theta';
+
 
 
 
