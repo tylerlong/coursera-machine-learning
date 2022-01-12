@@ -15,10 +15,17 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
+h = sigmoid(X * theta);
 
+function r  = f (x)
+  if (x >= 0.5) 
+    r = 1; 
+  else
+    r = 0; 
+  endif
+endfunction
 
-
-
+p = arrayfun(@(x) f(x), h);
 
 
 % =========================================================================
